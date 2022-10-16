@@ -10,20 +10,21 @@ import org.springframework.web.bind.annotation.*;
 
 public class UserController {
 
-    @GetMapping("/add")
+    @GetMapping("add")
     public String displayAddUserForm(){
         return "user/add";
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping("add")
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify){
-        model.addAttribute("username", user.getUsername());
-        model.addAttribute("email", user.getEmail());
-        
 
-        if(verify == user.getPassword()){
+        if(user.getPassword().equals(verify)){
             return "user/index";
         } else {
+            String error = "Passwords Must Match";
+            model.addAttribute("error", error);
+            model.addAttribute("username", user.getUsername());
+            model.addAttribute("email", user.getEmail());
             return "user/add";
         }
 

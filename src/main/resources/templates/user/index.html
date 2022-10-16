@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
-Welcome!
-</head>
-<body>
 
+<body>
+<h1 th:text="'Welcome, ' + ${user.getUsername} + '!'"></h1>
+<a th:href="@{~/}">Visit the Service Selection page!</a>
 </body>
+
+</head>
+
 </html>
