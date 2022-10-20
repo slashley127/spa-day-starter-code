@@ -28,6 +28,7 @@
             Verify Password:
             <input type = 'password' name = 'verify'>
         </label>
+        <p th:errors="${user.verifyPassword}"></p>
 
         <p th:text="${error}"></p>
 
